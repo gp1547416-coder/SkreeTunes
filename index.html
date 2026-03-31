@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Logic Web</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="transport">
+            <div class="lcd-display">
+                <span id="bpm">120</span> <small>BPM</small>
+            </div>
+            <div class="controls">
+                <button id="play-btn">▶</button>
+                <button id="stop-btn">■</button>
+            </div>
+        </header>
+        <div class="main-view">
+            <div class="track-headers" id="track-headers">
+                </div>
+            <div class="timeline" id="timeline">
+                <div class="playhead" id="playhead"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
