@@ -1,72 +1,78 @@
-/* style.css */
 :root {
-  --logic-bg: #1e1e1e;
-  --logic-border: #3a3a3a;
-  --logic-accent: #2c5ff6;
+    --bg-main: #1a1a1a;
+    --bg-header: #252525;
+    --border-color: #111;
+    --grid-color: #2a2a2a;
+    --logic-blue: #2c5ff6;
+    --playhead-red: #ff3b30;
+    --track-height: 80px;
 }
 
 body, html {
-  margin: 0;
-  padding: 0;
-  background-color: var(--logic-bg) !important; /* Force background color */
-  color: #eeeeee;
-  font-family: -apple-system, sans-serif;
-  height: 100vh;
-  width: 100vw;
+    margin: 0; padding: 0; height: 100%;
+    background: var(--bg-main); color: #ccc;
+    font-family: -apple-system, sans-serif;
+    overflow: hidden;
 }
 
-.app-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  border: 2px solid red; /* Temporary red border to see if CSS is loading */
-}
+.app-container { display: flex; flex-direction: column; height: 100vh; }
 
+/* Transport Bar */
 .transport {
-  background: #333;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
-  border-bottom: 1px solid #000;
-  gap: 15px;
+    height: 60px; background: #333;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 20px; border-bottom: 1px solid #000; z-index: 10;
 }
 
 .lcd-display {
-  background: #000;
-  color: #00ff00;
-  padding: 8px 15px;
-  border-radius: 4px;
-  font-family: 'Courier New', monospace;
-  font-weight: bold;
+    background: #000; color: #00ff00;
+    padding: 5px 15px; border-radius: 4px;
+    font-family: monospace; border: 1px solid #444;
 }
 
-.main-view {
-  display: flex;
-  flex: 1;
-}
+/* Sidebar and Timeline */
+.main-view { display: flex; flex: 1; overflow: hidden; }
 
 .track-headers {
-  width: 200px;
-  background: #252525;
-  border-right: 1px solid #111;
+    width: 200px; background: var(--bg-header);
+    border-right: 1px solid #000; display: flex; flex-direction: column;
 }
 
+.track-header {
+    height: var(--track-height);
+    border-bottom: 1px solid var(--border-color);
+    display: flex; align-items: center; padding: 0 15px;
+    font-size: 12px; font-weight: bold;
+}
+
+.timeline-container { flex: 1; overflow-x: auto; overflow-y: hidden; position: relative; }
+
 .timeline {
-  flex: 1;
-  position: relative;
-  background-image: 
-    linear-gradient(var(--logic-border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--logic-border) 1px, transparent 1px);
-  background-size: 50px 50px;
+    height: 100%; min-width: 2000px; /* Long timeline */
+    background-image: 
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 50px var(--track-height);
+    position: relative;
+}
+
+.track-lane {
+    height: var(--track-height);
+    border-bottom: 1px solid var(--border-color);
+    width: 100%;
 }
 
 .playhead {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 2px;
-  height: 100%;
-  background: #ff3b30;
-  z-index: 100;
+    position: absolute; top: 0; left: 0;
+    width: 2px; height: 100%; background: var(--playhead-red);
+    z-index: 5; pointer-events: none;
 }
+
+/* Buttons */
+button {
+    background: #444; color: white; border: 1px solid #000;
+    padding: 8px 16px; border-radius: 4px; cursor: pointer; margin: 0 5px;
+}
+
+.accent-btn { background: var(--logic-blue); border: none; }
+button:active { opacity: 0.7; }
